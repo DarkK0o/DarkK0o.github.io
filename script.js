@@ -1,4 +1,4 @@
-// ✅ Klasa z dodatkowym polem 'status'
+
 class Booking {
     constructor(id, name, date, type, guests) {
         this.id = id;
@@ -6,7 +6,7 @@ class Booking {
         this.date = date;
         this.type = type;
         this.guests = parseInt(guests);
-        this.status = "Nowa"; // Domyślny status
+        this.status = "Nowa";
     }
 }
 
@@ -17,7 +17,6 @@ const btnReset = document.getElementById('btnReset');
 
 let db = JSON.parse(localStorage.getItem('restaurant_db_pro')) || [];
 
-// ✅ Złożona funkcja: Liczenie statystyk (Dodatkowe wymaganie)
 function updateStats() {
     const totalRez = db.length;
     const totalGuests = db.reduce((sum, item) => sum + item.guests, 0);
@@ -27,14 +26,12 @@ function updateStats() {
     document.getElementById('currentDate').innerText = new Date().toLocaleDateString();
 }
 
-// ✅ Dynamiczne tworzenie widoku z kolorowymi statusami
 function render(data = db) {
     grid.innerHTML = '';
     
     data.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'card';
-        // Dynamiczna zmiana stylu w zależności od liczby osób
+        card.className = 'card'
         if(item.guests >= 6) card.style.borderLeftColor = "#f1c40f"; 
 
         card.innerHTML = `
@@ -55,7 +52,6 @@ function render(data = db) {
     updateStats();
 }
 
-// ✅ Rozbudowana Walidacja (Dodatkowe wymaganie)
 btnAdd.addEventListener('click', () => {
     const name = document.getElementById('inpKlient').value;
     const date = document.getElementById('inpData').value;
@@ -85,7 +81,7 @@ btnAdd.addEventListener('click', () => {
     clearForm();
 });
 
-// ✅ Zmiana statusu (Logika aplikacji)
+
 window.changeStatus = (id) => {
     const index = db.findIndex(item => item.id === id);
     const statuses = ["Nowa", "Potwierdzona", "W realizacji", "Zakończona"];
@@ -105,7 +101,6 @@ function clearForm() {
     document.getElementById('inpData').value = "";
 }
 
-// Filtrowanie (bez zmian)
 searchInput.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     const filtered = db.filter(b => b.name.toLowerCase().includes(term));
@@ -117,7 +112,6 @@ window.remove = (id) => {
     updateStorage();
 };
 
-// Reset bazy
 btnReset.addEventListener('click', () => {
     if(confirm("Czy na pewno usunąć WSZYSTKIE rezerwacje?")) {
         db = [];
