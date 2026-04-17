@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Rezerwacji PRO</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>🍷 Panel Sterowania</h2>
+            <div class="form">
+                <input type="text" id="inpKlient" placeholder="Imię i Nazwisko">
+                <input type="date" id="inpData">
+                <select id="inpStolik">
+                    <option value="Standard">Stolik Standard</option>
+                    <option value="VIP">Loża VIP</option>
+                    <option value="Taras">Taras</option>
+                </select>
+                <input type="number" id="inpOsoby" placeholder="Liczba osób" min="1" max="20">
+                <button id="btnDodaj">Zatwierdź Rezerwację</button>
+            </div>
+            <div id="status" class="status-msg"></div>
+            
+            <button id="btnReset" class="btn-secondary">Wyczyść wszystko</button>
+        </aside>
+
+        <main class="content">
+            <div class="stats-bar">
+                <div class="stat-item">Rezerwacji: <span id="countRez">0</span></div>
+                <div class="stat-item">Suma gości: <span id="countGosci">0</span></div>
+                <div class="stat-item">Dzisiaj: <span id="currentDate">--</span></div>
+            </div>
+
+            <header>
+                <h1>Aktywne Rezerwacje</h1>
+                <input type="text" id="search" placeholder="Szukaj gościa...">
+            </header>
+            
+            <div id="listaRez" class="reservation-grid">
+                </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
